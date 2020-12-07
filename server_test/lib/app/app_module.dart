@@ -1,0 +1,25 @@
+import 'package:servertest/app/modules/stock/stock_controller.dart';
+import 'package:servertest/app/modules/stock/stock_module.dart';
+
+import 'app_controller.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter/material.dart';
+import 'package:servertest/app/app_widget.dart';
+
+class AppModule extends MainModule {
+  @override
+  List<Bind> get binds => [
+        $AppController,
+        $StockController,
+      ];
+
+  @override
+  List<ModularRouter> get routers => [
+        ModularRouter(Modular.initialRoute, module: StockModule()),
+      ];
+
+  @override
+  Widget get bootstrap => AppWidget();
+
+  static Inject get to => Inject<AppModule>.of();
+}
